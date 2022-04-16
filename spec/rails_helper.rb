@@ -32,6 +32,9 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
+require 'rspec/rails'
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -64,9 +67,14 @@ end
 
 
 require 'simplecov'
+
+
 SimpleCov.start 'rails' do
   add_filter '/bin/'
   add_filter '/db/'
   add_filter '/spec/' # for rspec
   add_filter '/app/channels/application_cable/channel.rb'
+  add_filter '/app/mailers/application_mailer.rb'
+  add_filter '/app/models/application_record.rb'
+  add_filter '/app/channels/application_cable/connection.rb'
 end
