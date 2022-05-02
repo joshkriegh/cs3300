@@ -15,7 +15,7 @@
                         &nbsp|&nbsp
                         <td><%= link_to 'Edit', edit_project_path(project) %></td>
                         &nbsp|&nbsp
-                        <td><%= button_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                         <%else %>
                         <% end %>
                       </div>
