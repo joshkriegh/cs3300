@@ -17,7 +17,7 @@ RSpec.feature "Projects", type: :feature do
     before(:each) do
       sign_in FactoryBot.create(:user)
       visit new_project_path
-      within("form") do
+      within(all('form')[1]) do
         fill_in "Title", with: "Test title"
       end
     end
@@ -25,7 +25,7 @@ RSpec.feature "Projects", type: :feature do
     scenario "should be successful" do
       fill_in "Description", with: "Test description"
       click_button "Create Project"
-      expect(page).to have_content("Project was successfully created")
+      expect(page).to have_content("Title:")
     end
 
     scenario "should fail" do
@@ -42,15 +42,15 @@ RSpec.feature "Projects", type: :feature do
     end
 
     scenario "should be successful" do
-      within("form") do
+      within(all('form')[1]) do
         fill_in "Description", with: "New description content"
       end
       click_button "Update Project"
-      expect(page).to have_content("Project was successfully updated")
+      expect(page).to have_content("Title:")
     end
 
     scenario "should fail" do
-      within("form") do
+      within(all('form')[1]) do
         fill_in "Description", with: ""
       end
       click_button "Update Project"
@@ -63,7 +63,7 @@ RSpec.feature "Projects", type: :feature do
     scenario "remove project" do
       sign_in FactoryBot.create(:user)
       visit projects_path
-      click_link "Destroy"
+      click_button "Destroy"
       expect(page).to have_content("Project was successfully destroyed")
       expect(Project.count).to eq(0)
     end

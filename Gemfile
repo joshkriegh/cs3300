@@ -31,7 +31,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'factory_bot'
 
-
+gem 'bootstrap', '~> 4.6.1'
+gem 'sassc', '~> 2.1.0'
+gem 'sprockets-rails'
+gem 'jquery-rails'
 
 group :production do
   gem 'pg', '~> 0.21' # for Heroku deployment
